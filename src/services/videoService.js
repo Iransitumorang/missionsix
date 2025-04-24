@@ -1,4 +1,4 @@
-const initialVideos = [
+const defaultVideos = [
   {
     id: 1,
     title: "Big 4 Auditor Financial Analyst",
@@ -100,43 +100,56 @@ const initialVideos = [
   }
 ];
 
+// Initialize videos in localStorage if not exists
+if (!localStorage.getItem('videos')) {
+  localStorage.setItem('videos', JSON.stringify(defaultVideos));
+}
+
 // Get all videos
 export const getAllVideos = () => {
-  return initialVideos;
+  return JSON.parse(localStorage.getItem('videos') || '[]');
 };
 
 // Get video by id
 export const getVideoById = (id) => {
-  return initialVideos.find(video => video.id === id);
+  const videos = getAllVideos();
+  return videos.find(video => video.id === id);
 };
 
 // Add new video
 export const addVideo = (video) => {
+  const videos = getAllVideos();
   const newVideo = {
     ...video,
     id: Date.now(),
     rating: 0,
     students: 0
   };
-  initialVideos.push(newVideo);
+  videos.push(newVideo);
+  localStorage.setItem('videos', JSON.stringify(videos));
   return newVideo;
 };
 
 // Update video
 export const updateVideo = (id, updatedVideo) => {
-  const index = initialVideos.findIndex(video => video.id === id);
+  const videos = getAllVideos();
+  const index = videos.findIndex(video => video.id === id);
   if (index !== -1) {
-    initialVideos[index] = { ...initialVideos[index], ...updatedVideo };
-    return initialVideos[index];
+    videos[index] = { ...videos[index], ...updatedVideo };
+    localStorage.setItem('videos', JSON.stringify(videos));
+    return videos[index];
   }
   return null;
 };
 
 // Delete video
 export const deleteVideo = (id) => {
-  const index = initialVideos.findIndex(video => video.id === id);
+  const videos = getAllVideos();
+  const index = videos.findIndex(video => video.id === id);
   if (index !== -1) {
-    return initialVideos.splice(index, 1)[0];
+    const deletedVideo = videos.splice(index, 1)[0];
+    localStorage.setItem('videos', JSON.stringify(videos));
+    return deletedVideo;
   }
   return null;
 };

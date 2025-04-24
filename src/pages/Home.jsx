@@ -43,20 +43,6 @@ function Home() {
     }));
   };
 
-  // CREATE: Tambah video baru
-  const handleAdd = () => {
-    setModalMode('add');
-    setFormData({
-      title: "",
-      price: "",
-      author: "",
-      description: "",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=60"
-    });
-    setShowModal(true);
-  };
-
   // CREATE/UPDATE: Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -160,11 +146,25 @@ function Home() {
       <div className="container-section mt-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className="section-title">Koleksi Video Pembelajaran Unggulan</h2>
-          <button className="btn-add-video" onClick={() => setShowModal(true)}>
+          <button 
+            className="btn-add-video" 
+            onClick={() => {
+              setModalMode('add');
+              setFormData({
+                title: "",
+                price: "",
+                author: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
+                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=60"
+              });
+              setShowModal(true);
+            }}
+          >
             <i className="bi bi-plus-circle"></i>
-          Tambah Video
-        </button>
-      </div>
+            Tambah Video
+          </button>
+        </div>
 
         {/* Video Grid */}
         <div className="row g-4">
@@ -257,17 +257,15 @@ function Home() {
 
       {/* Modal */}
       {showModal && (
-        <div className="modal show d-block" tabIndex="-1" onClick={(e) => {
-          if (e.target.classList.contains('modal')) setShowModal(false);
-        }}>
-          <div className="modal-dialog">
+        <div className="modal show d-block" tabIndex="-1" onClick={handleModalClick}>
+          <div className="modal-dialog" onClick={e => e.stopPropagation()}>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">
                   {modalMode === 'add' ? 'Tambah Video Baru' : 
                    modalMode === 'edit' ? 'Edit Video' : 'Detail Video'}
                 </h5>
-                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+                <button type="button" className="btn-close" onClick={handleCloseModal}></button>
               </div>
               <div className="modal-body">
                 <form onSubmit={handleSubmit}>
