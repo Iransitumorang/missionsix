@@ -1,0 +1,93 @@
+.card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.nav-tabs .nav-link {
+  color: #666;
+  border: none;
+  padding: 10px 20px;
+}
+
+.nav-tabs .nav-link.active {
+  color: #28a745;
+  border-bottom: 2px solid #28a745;
+  background: none;
+}
+
+.bg-dark {
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/banner-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  padding: 10px 30px;
+}
+
+.rounded-circle {
+  object-fit: cover;
+}
+
+/* Modal Styles */
+.modal.show {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-backdrop.show {
+  opacity: 0;
+}
+
+/* Button Group Styles */
+.btn-group {
+  gap: 5px;
+}
+
+.btn-group .btn {
+  flex: 1;
+  border-radius: 4px !important;
+}
+
+/* Icon Styles */
+.bi {
+  font-size: 0.9rem;
+}
+
+/* Form Styles */
+.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+textarea.form-control {
+  min-height: 100px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .nav-tabs .nav-link {
+    white-space: nowrap;
+  }
+} 
