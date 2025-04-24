@@ -1,4 +1,8 @@
 :root {
+  --primary-color: #FF6B00;
+  --text-color: #333333;
+  --muted-color: #6c757d;
+  --border-color: #dee2e6;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -28,6 +32,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
 }
 
 h1 {
@@ -65,4 +71,54 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Navbar Styles */
+.navbar-light .navbar-nav .nav-link {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--primary-color);
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: var(--primary-color);
+}
+
+/* Footer Styles */
+footer {
+  font-size: 0.9rem;
+}
+
+footer h6 {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+footer .text-muted {
+  color: var(--muted-color) !important;
+}
+
+footer a.text-muted:hover {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+/* Social Media Icons */
+.bi {
+  font-size: 1.2rem;
+}
+
+a:hover .bi {
+  color: var(--primary-color);
+}
+
+/* Logo */
+.navbar-brand img,
+footer img {
+  height: 30px;
+  width: auto;
 }
