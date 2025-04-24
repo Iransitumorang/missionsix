@@ -1,7 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Handle logout logic here
+    // ...
+    
+    // Redirect to login page
+    navigate('/login');
+  };
+
   return (
     <header className="border-bottom">
       <nav className="navbar navbar-expand-lg navbar-light bg-white py-3">
@@ -11,7 +21,7 @@ function Header() {
               <img src={logo} alt="videobelajar" height="30" />
             </Link>
             <ul className="dropdown-menu">
-              <li><Link className="dropdown-item" to="/logout">Keluar</Link></li>
+              <li><button className="dropdown-item" onClick={handleLogout}>Keluar</button></li>
             </ul>
           </div>
           
@@ -37,7 +47,7 @@ function Header() {
                 <li><Link className="dropdown-item" to="/kelas">Kelas Saya</Link></li>
                 <li><Link className="dropdown-item" to="/pesanan">Pesanan Saya</Link></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link className="dropdown-item" to="/logout">Keluar</Link></li>
+                <li><button className="dropdown-item" onClick={handleLogout}>Keluar</button></li>
               </ul>
             </div>
           </div>

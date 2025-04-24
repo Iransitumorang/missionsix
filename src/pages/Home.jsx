@@ -133,19 +133,25 @@ function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container-section">
-          <div className="hero-content">
-            <h1 className="hero-title">
-              Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video Interaktif!
-            </h1>
-            <p className="hero-description">
-              Temukan ilmu baru yang menarik dan mendalam melalui koleksi video pembelajaran berkualitas tinggi. Tidak hanya itu, 
-              Anda juga dapat berpartisipasi dalam latihan interaktif yang akan meningkatkan pemahaman Anda.
-            </p>
-            <button className="btn btn-mulai">
-              Temukan Video Course untuk Dipelajari!
-            </button>
+      <section className="py-5 mx-75px my-4" style={{
+        background: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1440&auto=format&fit=crop")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        borderRadius: '12px',
+        margin: '1.5rem 75px'
+      }}>
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-lg-6">
+              <h1 className="text-white mb-4">Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video Interaktif!</h1>
+              <p className="text-white-50 mb-4">
+                Temukan ilmu baru yang menarik dan mendalam melalui koleksi video pembelajaran berkualitas tinggi. Tidak hanya itu, 
+                Anda juga dapat berpartisipasi dalam latihan interaktif yang akan meningkatkan pemahaman Anda.
+              </p>
+              <button className="btn btn-warning px-4">
+                Temukan Video Course untuk Dipelajari!
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -156,13 +162,13 @@ function Home() {
           <h2 className="section-title">Koleksi Video Pembelajaran Unggulan</h2>
           <button className="btn-add-video" onClick={() => setShowModal(true)}>
             <i className="bi bi-plus-circle"></i>
-            Tambah Video
-          </button>
-        </div>
+          Tambah Video
+        </button>
+      </div>
 
         {/* Video Grid */}
         <div className="row g-4">
-          {videos.map((video) => (
+        {videos.map((video) => (
             <div className="col-md-4" key={video.id}>
               <div className="card">
                 <img src={video.image} className="card-img-top" alt={video.title} />
@@ -186,6 +192,17 @@ function Home() {
                     </div>
                     <h6 className="text-success fw-bold mb-0">Rp {video.price.toLocaleString()}</h6>
                   </div>
+                  <div className="btn-group w-100 mt-3">
+                    <button className="btn btn-outline-primary btn-sm" onClick={() => handleView(video)}>
+                      <i className="bi bi-eye me-1"></i>Lihat
+                    </button>
+                    <button className="btn btn-outline-warning btn-sm" onClick={() => handleEdit(video)}>
+                      <i className="bi bi-pencil me-1"></i>Edit
+                    </button>
+                    <button className="btn btn-outline-danger btn-sm" onClick={() => handleDelete(video.id)}>
+                      <i className="bi bi-trash me-1"></i>Hapus
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -194,26 +211,46 @@ function Home() {
       </div>
 
       {/* Newsletter Section */}
-      <section className="newsletter-section">
-        <div className="container-section">
-          <div className="newsletter-content">
-            <h3 className="newsletter-title">Mau Belajar Lebih Banyak?</h3>
-            <p className="newsletter-description">
-              Daftarkan dirimu untuk mendapatkan informasi terbaru dan penawaran spesial dari program-program terbaik hariesok.id
-            </p>
-            <form onSubmit={handleSubscribe} className="newsletter-form">
-              <input
-                type="email"
-                className="newsletter-input"
-                placeholder="Masukkan Emailmu"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button type="submit" className="btn btn-subscribe">
-                Subscribe
-              </button>
-            </form>
+      <section className="newsletter py-5 mx-75px my-4" style={{
+        background: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1440&auto=format&fit=crop")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        borderRadius: '12px',
+        margin: '1.5rem 75px'
+      }}>
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-lg-6">
+              <span className="text-white-50 mb-2 d-block">NEWSLETTER</span>
+              <h2 className="text-white mb-4">Mau Belajar Lebih Banyak?</h2>
+              <p className="text-white-50 mb-4">
+                Daftarkan dirimu untuk mendapatkan informasi terbaru dan penawaran spesial dari program-program terbaik hariesok.id
+              </p>
+              <form onSubmit={handleSubscribe} className="d-flex gap-2 justify-content-center">
+                <div className="position-relative" style={{ width: '100%' }}>
+                  <input
+                    type="email"
+                    className="form-control rounded-pill py-2 px-4"
+                    placeholder="Masukkan Emailmu"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={{
+                      backgroundColor: 'white',
+                      border: 'none',
+                      fontSize: '15px'
+                    }}
+                  />
+                  <button type="submit" className="btn btn-warning position-absolute end-0 top-50 translate-middle-y me-2 rounded-pill" style={{ 
+                    minWidth: '100px',
+                    padding: '0.25rem 0.75rem',
+                    fontSize: '14px'
+                  }}>
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -295,7 +332,7 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
+      </div>
       )}
     </div>
   );

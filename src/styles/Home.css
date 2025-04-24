@@ -240,4 +240,39 @@ textarea.form-control {
   font-size: 2rem;
   font-weight: 600;
   color: #333;
+}
+
+.newsletter {
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter input.form-control {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.newsletter input.form-control:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.newsletter .btn-warning {
+  background-color: #FFC107;
+  border-color: #FFC107;
+  color: #000;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+}
+
+.newsletter .btn-warning:hover {
+  background-color: #ffca2c;
+  border-color: #ffca2c;
+}
+
+.mx-75px {
+  margin-left: 75px;
+  margin-right: 75px;
 } 
